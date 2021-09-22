@@ -6,6 +6,10 @@ const app = express();
 //Connect Database
 connectDB();
 
+// Init Middleware
+// podesmos aceptar data
+app.use(express.json({ extend : false}));
+
 app.get('/', (req, res) =>
     //res.send('Hello world')
     res.json({ msg: 'welcome to postman nodejs intregration' })
