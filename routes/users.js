@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { body, validationResult, check } = require('express-validator');
 const bcrypt = require('bcriptjs');
-
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-
+const config = require('config');
 //@route POST api/users
 //@desc Register a user
 //@access Public
@@ -39,7 +39,20 @@ router.post('/', [
 
         await user.save();
 
-        res.send('User save');
+        const payload = {
+            user: {
+                id: user.id
+            }
+        }
+
+        //agrgeamos devolucion de token con expiracion
+        jwt.sign(payload, config.get('jwtSecret'),{
+            expiresIn: 36000
+        }, (err,token) => {
+            if(err) throw err;
+            res.json({token});npm 
+        })
+//        res.send('User save');
 
     } catch (error) {
         console.error(error.message);
