@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { body, validationResult, check } = require('express-validator');
-const bcrypt = require('bcriptjs');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const config = require('config');
@@ -50,7 +50,7 @@ router.post('/', [
             expiresIn: 36000
         }, (err,token) => {
             if(err) throw err;
-            res.json({token});npm 
+            res.json({token});
         })
 //        res.send('User save');
 
