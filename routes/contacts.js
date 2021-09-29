@@ -61,15 +61,15 @@ router.put('/:id', auth, async (req, res) => {
     try {
         //INFO: de esta forma se puede consutlar los params de la copnsuilta
         let contact = await Contact.findById(req.params.id);
-        if(!contact) return res.status(400).json({msg: 'Contact not found'});
+        if (!contact) return res.status(400).json({ msg: 'Contact not found' });
 
         //WARNING: asegurarse que el uyser tenga contacts
-        if(contact.user.toString() !== req.user.id){
-            return res.status(401).json({msg: 'not authorized'});
+        if (contact.user.toString() !== req.user.id) {
+            return res.status(401).json({ msg: 'not authorized' });
         }
 
         //INFO: buscamos el contacto por id y le seteamos contactfields si no existe lo creamos
-        contact = await Contact.findByIdAndUpdate(req.params.id, {$set : contactFields},{new: true});
+        contact = await Contact.findByIdAndUpdate(req.params.id, { $set: contactFields }, { new: true });
 
         res.json(contact);
 
@@ -83,23 +83,23 @@ router.put('/:id', auth, async (req, res) => {
 //@route DELETE api/contacts/:id
 //@desc delete contact 
 //@access Private
-router.delete('/:id',auth, async (req, res) => {
-   
+router.delete('/:id', auth, async (req, res) => {
+
     try {
         //INFO: de esta forma se puede consutlar los params de la copnsuilta
         let contact = await Contact.findById(req.params.id);
-        if(!contact) return res.status(400).json({msg: 'Contact not found'});
+        if (!contact) return res.status(400).json({ msg: 'Contact not found' });
 
         //WARNING: asegurarse que el uyser tenga contacts
-        if(contact.user.toString() !== req.user.id){
-            return res.status(401).json({msg: 'not authorized'});
+        if (contact.user.toString() !== req.user.id) {
+            return res.status(401).json({ msg: 'not authorized' });
         }
 
         //INFO: buscamos el contacto por id y le seteamos contactfields si no existe lo creamos
-        
+
         await Contact.findByIdAndRemove(req.params.id);
 
-        res.json({msg:'Contact remove'});
+        res.json({ msg: 'Contact remove' });
 
     } catch (error) {
         console.log(error.message);
