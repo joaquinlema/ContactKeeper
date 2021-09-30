@@ -4,6 +4,7 @@ const { body, validationResult, check } = require('express-validator');
 const User = require('../models/User');
 const Contact = require('../models/Contact');
 const auth = require('../middleware/auth');
+const { setMaxListeners } = require('../models/User');
 
 //@route GET api/contacts
 //@desc get all users contacts
@@ -48,6 +49,7 @@ router.post('/', [auth, [check('name', 'name is required').not().isEmpty(),]], a
 //@route PUT api/contacts/:id
 //@desc update contact 
 //@access Private
+// 💩
 router.put('/:id', auth, async (req, res) => {
     const { name, email, phone, type } = req.body;
 
@@ -80,6 +82,7 @@ router.put('/:id', auth, async (req, res) => {
 
 });
 
+// 🤖
 //@route DELETE api/contacts/:id
 //@desc delete contact 
 //@access Private
@@ -95,7 +98,7 @@ router.delete('/:id', auth, async (req, res) => {
             return res.status(401).json({ msg: 'not authorized' });
         }
 
-        //INFO: buscamos el contacto por id y le seteamos contactfields si no existe lo creamos
+        //INFO: buscamos el contacto 😄 por id y le seteamos contactfields si no existe lo creamos
 
         await Contact.findByIdAndRemove(req.params.id);
 
@@ -104,7 +107,8 @@ router.delete('/:id', auth, async (req, res) => {
     } catch (error) {
         console.log(error.message);
         res.status(500).send('Server error');
-    }
+    } 
+
 });
 
 module.exports = router;
