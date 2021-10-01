@@ -18,7 +18,7 @@ const Page = () => {
     };
 
     return (
-        <Layout style={{height:"100vh"}}>
+        <Layout style={{ height: "100vh" }}>
             <Sider breakpoint="lg" trigger={null} collapsible collapsed={collapsed}>
                 <div className="logo" />
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
@@ -34,11 +34,11 @@ const Page = () => {
                 </Menu>
             </Sider>
             <Layout className="site-layout">
-                <Header className="site-layout-background" style={{ padding: 0 }}>
-                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                        className: 'trigger',
-                        onClick: toggle,
-                    })}
+                <Header className="site-layout-background" style={{ padding: '2px' }}>
+                    {collapsed
+                        ? <MenuUnfoldOutlined className='trigger' onClick={toggle} twoToneColor="#eb2f96"/>
+                        : <MenuFoldOutlined className='trigger' onClick={toggle} twoToneColor="#52c41a"/>
+                    }
                 </Header>
                 <Content
                     className="site-layout-background"
