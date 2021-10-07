@@ -1,9 +1,9 @@
 import http from "../helpers/axiosInstance";
 
-const seccion = 'Users';
+const seccion = 'users';
 
-const getAll = () => {
-  return http.get(`/${seccion}`);
+const getAll = data => {
+  return http.post(`/${seccion}`, data);
 };
 
 const getById = id => {
