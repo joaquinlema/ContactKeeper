@@ -7,10 +7,11 @@ import {
     VideoCameraOutlined,
     UploadOutlined,
 } from '@ant-design/icons';
+import AppRoute from '../../routes/AppRoute';
 
 const { Header, Sider, Content } = Layout;
 
-const Page = () => {
+const LandingPage = () => {
     const [collapsed, setCollapsed] = useState(false);
 
     const toggle = () => {
@@ -47,11 +48,11 @@ const Page = () => {
                         padding: 24,
                     }}
                 >
-                    Content
+                    <AppRoute />
                 </Content>
             </Layout>
         </Layout>
     );
 }
 
-export default Page;
+export default LandingPage;

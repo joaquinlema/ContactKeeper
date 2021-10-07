@@ -1,10 +1,13 @@
 import './App.css';
 import "antd/dist/antd.css";
-import Page from './components/layout/Page';
+import LandingPage from './components/pages/LandingPage';
+import ContactState from './context/contact/ContactState';
 
 const App = () => {
   return (
-    <Page />
+    <ContactState>
+      <LandingPage />
+    </ContactState>
   );
 }
 
