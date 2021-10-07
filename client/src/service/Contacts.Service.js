@@ -1,6 +1,6 @@
 import http from "../helpers/axiosInstance";
 
-const seccion = 'Contacts';
+const seccion = 'contacts';
 
 const getAll = () => {
   return http.get(`/${seccion}`);
@@ -15,11 +15,11 @@ const create = data => {
 };
 
 const update = (data) => {
-  return http.post(`/${seccion}/edit`,data);
+  return http.put(`/${seccion}/:id`,data);
 };
 
 const remove = (data) => {
-  return http.post(`/${seccion}/deleteById`, data);
+  return http.delete(`/${seccion}/:id`, data);
 };
 
 const ContactService = {
