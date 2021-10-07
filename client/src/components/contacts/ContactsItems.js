@@ -1,31 +1,33 @@
 import React from 'react';
-import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Card, Avatar, Badge } from 'antd';
+import { DeleteTwoTone, EditTwoTone, SettingOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
 
-const ContactsItems = ({nombre, email}) => {
+const ContactsItems = ({ nombre, email, type }) => {
     return (
-        <Card
-            style={{ width: 300 }}
-            cover={
-                <img
-                    alt="example"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+        <Badge.Ribbon text={type} color={type !== 'personal' ? "gold" : "blue"}>
+            <Card
+                style={{ width: 300 }}
+                cover={
+                    <img
+                        alt="example"
+                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                }
+                actions={[
+                    <SettingOutlined key="setting" />,
+                    <EditTwoTone key="edit" />,
+                    <DeleteTwoTone key="delete" />
+                ]}
+            >
+                <Meta
+                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    title={nombre}
+                    description={email}
                 />
-            }
-            actions={[
-                <SettingOutlined key="setting" />,
-                <EditOutlined key="edit" />,
-                <EllipsisOutlined key="ellipsis" />,
-            ]}
-        >
-            <Meta
-                avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                title={nombre}
-                description={email}
-            />
-        </Card>
+            </Card>
+        </Badge.Ribbon>
     )
 }
 
