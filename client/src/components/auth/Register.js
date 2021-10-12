@@ -1,7 +1,12 @@
 import { Form, Input, Button, Checkbox } from 'antd';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import AlertContext from '../../context/alert/AlertContext';
 
 const Register = () => {
+
+    const alertContext = useContext(AlertContext);
+
+    const {setAlert} = alertContext;
 
     const [register, setRegister] = useState({
         name: '',
@@ -16,10 +21,16 @@ const Register = () => {
         setRegister({ ...register, [e.target.name]: e.target.value });
 
     const onFinish = (values) => {
+        if(name === '' || email === '' || password === ''){
+            setAlert('Ops ...', 'error','Please enter all Fields');
+        } else if( password !== password2){
+            setAlert('Ops ...', 'error','Passwords not match');
+        }
         console.log('Success:', values);
     };
 
     const onFinishFailed = (errorInfo) => {
+        setAlert('Ops ...', 'error',errorInfo);
         console.log('Failed:', errorInfo);
     };
 
@@ -68,7 +79,6 @@ const Register = () => {
 
             <Form.Item
                 label="Password"
-                
                 onChange={onChange}
                 rules={[
                     {
@@ -82,7 +92,6 @@ const Register = () => {
 
             <Form.Item
                 label="Password"
-               
                 onChange={onChange}
                 rules={[
                     {
