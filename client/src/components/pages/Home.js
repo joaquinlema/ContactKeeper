@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext,useEffect } from 'react';
 import { Row, Col } from 'antd';
 import Contacts from '../contacts/Contacts';
+import ContactContext from '../../context/contact/ContactContext';
 
 const Home = () => {
+
+    const contactsContext = useContext(ContactContext);
+    const {getContacts} = contactsContext;
+
+    useEffect(() => {
+        getContacts();
+    }, []);
+
     return (
         <Row>
             <Col xs={10} sm={4} md={8} lg={12} xl={12}>

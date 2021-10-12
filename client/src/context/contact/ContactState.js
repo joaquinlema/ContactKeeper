@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
-import ContactContext from './contactContext';
-import contactReducer from './contactReducer';
+import ContactContext from './ContactContext';
+import ContactReducer from './ContactReducer';
 import {
     GET_CONTACTS,
     ADD_CONTACT,
@@ -23,7 +23,7 @@ const ContactState = props => {
         error: null
     };
 
-    const [state, dispatch] = useReducer(contactReducer, initialState);
+    const [state, dispatch] = useReducer(ContactReducer, initialState);
 
     // Get Contacts
     const getContacts = async () => {

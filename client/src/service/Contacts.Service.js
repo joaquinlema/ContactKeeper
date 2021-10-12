@@ -1,3 +1,4 @@
+import axios from "axios";
 import http from "../helpers/axiosInstance";
 
 const seccion = 'contacts';
@@ -9,7 +10,9 @@ const config = {
 };
 
 const getAll = () => {
-    return http.get(`/${seccion}`);
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE0Y2U4MjE4NGI2YWEyNjA1NzU4ZmJkIn0sImlhdCI6MTYzMzYzODg4NCwiZXhwIjoxNjMzNjc0ODg0fQ.vK8oktRorp-CJWpgJFgAOuHCpeJ7kK4hXxEL45Az3XU";
+    axios.defaults.headers.common['x-auth-token'] = token;
+    return axios.get(`/api/${seccion}`);
 };
 
 const getById = id => {
