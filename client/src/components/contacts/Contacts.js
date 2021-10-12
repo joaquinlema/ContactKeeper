@@ -3,6 +3,10 @@ import ContactContext from '../../context/contact/ContactContext';
 import _ from 'lodash';
 import ContactsItems from './ContactsItems';
 import LoadingContactItem from './LoadingContactItem';
+import {
+    CSSTransition,
+    TransitionGroup,
+} from 'react-transition-group';
 
 const Contacts = () => {
     const contactsContext = useContext(ContactContext);
@@ -13,10 +17,19 @@ const Contacts = () => {
         <Fragment>
             {
                 (_.isEmpty(contacts))
-                    ? <LoadingContactItem loading={true}/>
-                    : _.map(contacts, (contact) => (
-                        <ContactsItems nombre={contact.nombre} email={contact.email}/>
-                    ))
+                    ? <LoadingContactItem loading={true} />
+                    :
+                    <TransitionGroup>
+                        {_.map(contacts, (contact, index) => (
+                            <CSSTransition
+                                key={index}
+                                timeout={500}
+                                classNames="item"
+                            >
+                                <ContactsItems nombre={contact.nombre} email={contact.email} />
+                            </CSSTransition>
+                        ))}
+                    </TransitionGroup>
             }
         </Fragment>
     )
