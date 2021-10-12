@@ -8,6 +8,7 @@ import {
     UploadOutlined,
 } from '@ant-design/icons';
 import AppRoute from '../../routes/AppRoute';
+import Alerts from '../layout/Alerts';
 
 const { Header, Sider, Content } = Layout;
 
@@ -48,6 +49,7 @@ const LandingPage = () => {
                         padding: 24,
                     }}
                 >
+                    <Alerts />
                     <AppRoute />
                 </Content>
             </Layout>
