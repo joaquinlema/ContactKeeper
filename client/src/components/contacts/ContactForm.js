@@ -55,12 +55,6 @@ const ContactForm = () => {
     return (
         <Form
             name="basic"
-            labelCol={{
-                span: 8,
-            }}
-            wrapperCol={{
-                span: 16,
-            }}
             initialValues={{
                 remember: true,
             }}
@@ -104,7 +98,7 @@ const ContactForm = () => {
                     },
                 ]}
             >
-                <Input name='phone'value={phone} placeholder='Phone'/>
+                <Input name='phone' value={phone} placeholder='Phone' />
             </Form.Item>
 
             <Form.Item name='type' label="Type" rules={[{ required: true }]}>
@@ -112,7 +106,7 @@ const ContactForm = () => {
                     placeholder="Select a option and change input text above"
                     defaultValue='personal'
                     checked={type === 'personal'}
-                    onChange={(val) => onChange({target : {name:'type',value:val}})}
+                    onChange={(val) => onChange({ target: { name: 'type', value: val } })}
                     allowClear
                 >
                     <Option value="personal">personal</Option>
@@ -121,13 +115,8 @@ const ContactForm = () => {
                 </Select>
             </Form.Item>
 
-            <Form.Item
-                wrapperCol={{
-                    offset: 8,
-                    span: 16,
-                }}
-            >
-                <Button type="primary" htmlType="submit">
+            <Form.Item>
+                <Button type="primary" htmlType="submit" block>
                     {current ? 'Update Contact' : 'Add Contact'}
                 </Button>
             </Form.Item>

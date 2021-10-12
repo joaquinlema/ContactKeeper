@@ -15,7 +15,7 @@ const Home = () => {
     }, []);
 
     return (
-        <Row>
+        <Row gutter={16}>
             <Col xs={10} sm={4} md={8} lg={12} xl={12}>
                 <ContactForm />
             </Col>
