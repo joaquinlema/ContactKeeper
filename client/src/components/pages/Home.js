@@ -11,6 +11,7 @@ const Home = () => {
 
     useEffect(() => {
         getContacts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
