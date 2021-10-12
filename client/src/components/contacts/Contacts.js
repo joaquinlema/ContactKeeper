@@ -25,7 +25,7 @@ const Contacts = () => {
                                 key={index}
                                 timeout={500}
                                 classNames="item"
-                            >
+                            >   
                                 <ContactsItems nombre={contact.nombre} email={contact.email} />
                             </CSSTransition>
                         ))}
