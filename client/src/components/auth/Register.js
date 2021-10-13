@@ -44,8 +44,6 @@ const Register = (props) => {
         } else {
             register(registerForm)
         }
-
-        console.log('Success:', values);
     };
 
     const onFinishFailed = (errorInfo) => {

@@ -1,20 +1,46 @@
 import { Form, Input, Button } from 'antd';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import AlertContext from '../../context/alert/AlertContext';
+import AuthContext from '../../context/auth/AuthContext';
 
-const Login = () => {
+const Login = (props) => {
 
-    const [login, setLogin] = useState({
+    const alertContext = useContext(AlertContext);
+    const authContext = useContext(AuthContext);
+    const { login, error, clearErrors, isAuthenticated } = authContext;
+    const { setAlert } = alertContext;
+
+    const [loginData, setLogin] = useState({
         name: '',
         password: '',
     });
 
-    const { name, email, password, password2 } = login;
+    const { email, password } = loginData;
+
+    useEffect(() => {
+
+        if (isAuthenticated) {
+            props.history.push('/');
+        }
+
+        if (error) {
+            let errormsg = '';
+            error.map(elem => errormsg.concat(` ${elem.msg}`))
+            setAlert('Ops ...', 'warning', `${errormsg}`);
+            clearErrors();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [error, isAuthenticated, props.history]);
 
     const onChange = e =>
-        setLogin({ ...login, [e.target.name]: e.target.value });
+        setLogin({ ...loginData, [e.target.name]: e.target.value });
 
     const onFinish = (values) => {
-        console.log('Success:', values);
+        if (email === '' || password === '') {
+            setAlert('Ops ...', 'error', 'Please enter all Fields');
+        } else {
+            login(loginData);
+        }
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -39,7 +65,7 @@ const Login = () => {
         >
             <Form.Item
                 label="Email"
-                
+
                 onChange={onChange}
                 rules={[
                     {
@@ -48,12 +74,12 @@ const Login = () => {
                     },
                 ]}
             >
-                <Input name="email"/>
+                <Input name="email" />
             </Form.Item>
 
             <Form.Item
                 label="Password"
-                
+
                 onChange={onChange}
                 rules={[
                     {
@@ -62,7 +88,7 @@ const Login = () => {
                     },
                 ]}
             >
-                <Input.Password name="password"/>
+                <Input.Password name="password" />
             </Form.Item>
 
             <Form.Item>

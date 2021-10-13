@@ -9,11 +9,13 @@ import {
 } from '@ant-design/icons';
 import AppRoute from '../../routes/AppRoute';
 import Alerts from '../layout/Alerts';
+import { useHistory } from 'react-router';
 
 const { Header, Sider, Content } = Layout;
 
-const LandingPage = (props) => {
+const LandingPage = () => {
     const [collapsed, setCollapsed] = useState(false);
+    let history = useHistory();
 
     const toggle = () => {
         setCollapsed(!collapsed);
@@ -24,13 +26,13 @@ const LandingPage = (props) => {
             <Sider breakpoint="lg" trigger={null} collapsible collapsed={collapsed}>
                 <div className="logo" />
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                    <Menu.Item key="1" icon={<UserOutlined />} onClick={() => { props.history.push('/login')}}>
+                    <Menu.Item key="1" icon={<UserOutlined />} onClick={() => { history.push('/login')}}>
                         Login
                     </Menu.Item>
-                    <Menu.Item key="2" icon={<VideoCameraOutlined />} onClick={() => { props.history.push('/register')}}>
+                    <Menu.Item key="2" icon={<VideoCameraOutlined />} onClick={() => { history.push('/register')}}>
                         Register
                     </Menu.Item>
-                    <Menu.Item key="3" icon={<UploadOutlined />} onClick={() => { props.history.push('/home')}}>
+                    <Menu.Item key="3" icon={<UploadOutlined />} onClick={() => { history.push('/home')}}>
                         Home
                     </Menu.Item>
                 </Menu>
