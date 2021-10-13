@@ -4,16 +4,24 @@ import Home from '../components/pages/Home';
 import About from '../components/pages/About';
 import Register from '../components/auth/Register';
 import Login from '../components/auth/Login';
+import PrivateRoute from './PrivateRoute';
 
-//TODO: crear la private routes
 const AppRoute = () => {
     return (
         <Router>
             <Switch>
-                <Route exact={true} path='/' component={Home} />
-                <Route exact path='/about' component={About} />
-                <Route exact path='/register' component={Register} />
-                <Route exact path='/login' component={Login} />
+                <PrivateRoute exact={true} path='/'>
+                    <Home />
+                </PrivateRoute>
+                <PrivateRoute exact path='/about' component={About} >
+                    <About />
+                </PrivateRoute>
+                <Route exact path='/register' component={Register} >
+                    <Register />
+                </Route>
+                <Route exact path='/login' component={Login} >
+                    <Login />
+                </Route>
             </Switch>
         </Router>
     )
