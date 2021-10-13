@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
-import AuthContext from './authContext';
-import authReducer from './authReducer';
-import setAuthToken from '../../utils/setAuthToken';
+import AuthContext from './AuthContext';
+import authReducer from './AuthReducer';
+import setAuthToken from '../../utils/SetAuthToken';
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
@@ -61,7 +61,7 @@ const AuthState = props => {
         } catch (err) {
             dispatch({
                 type: REGISTER_FAIL,
-                payload: err.response.data.msg
+                payload: err.response.data.errors
             });
         }
     };

@@ -104,7 +104,7 @@ const ContactForm = () => {
             <Form.Item name='type' label="Type" rules={[{ required: true }]}>
                 <Select
                     placeholder="Select a option and change input text above"
-                    defaultValue='personal'
+                    initialValues='personal'
                     checked={type === 'personal'}
                     onChange={(val) => onChange({ target: { name: 'type', value: val } })}
                     allowClear

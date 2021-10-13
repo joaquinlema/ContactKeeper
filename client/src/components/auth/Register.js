@@ -16,7 +16,9 @@ const Register = (props) => {
         }
 
         if (error) {
-            setAlert('Ops ...', 'warning', `${error}`);
+            let errormsg = '';
+            error.map(elem => errormsg.concat(` ${elem.msg}`))
+            setAlert('Ops ...', 'warning', `${errormsg}`);
             clearErrors();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps

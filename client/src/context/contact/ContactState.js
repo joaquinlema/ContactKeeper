@@ -14,6 +14,7 @@ import {
     CONTACT_ERROR
 } from '../types';
 import ContactService from '../../service/Contacts.Service';
+import axios from 'axios';
 
 const ContactState = props => {
     const initialState = {
@@ -28,9 +29,9 @@ const ContactState = props => {
     // Get Contacts
     const getContacts = async () => {
         try {
-            //   const res = await axios.get('/api/contacts');
+            const res = await axios.get('/api/contacts');
 
-            const res = await ContactService.getAll();
+            // const res = await ContactService.getAll();
 
             dispatch({
                 type: GET_CONTACTS,
