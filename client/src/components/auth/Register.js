@@ -1,20 +1,26 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useContext, useState, useEffect } from 'react';
 import AlertContext from '../../context/alert/AlertContext';
-import AuthContext from '../../context/auth/authContext';
-const Register = () => {
+import AuthContext from '../../context/auth/AuthContext';
+const Register = (props) => {
 
     const alertContext = useContext(AlertContext);
     const authContext = useContext(AuthContext);
-    const { register, error, clearErrors } = authContext;
+    const { register, error, clearErrors, isAuthenticated } = authContext;
     const { setAlert } = alertContext;
 
     useEffect(() => {
+
+        if(isAuthenticated){
+            props.history.push('/');
+        }
+
         if (error) {
             setAlert('Ops ...', 'warning', `${error}`);
             clearErrors();
         }
-    }, [error]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [error,isAuthenticated,props.history]);
 
     const [registerForm, setRegister] = useState({
         name: '',
