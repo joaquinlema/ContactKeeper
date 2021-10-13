@@ -5,6 +5,9 @@ import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
 import setAuthToken from './utils/SetAuthToken';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -15,7 +18,9 @@ const App = () => {
     <AuthState>
       <AlertState>
       <ContactState>
+        <Router>
         <LandingPage />
+        </Router>
       </ContactState>
       </AlertState>
     </AuthState>

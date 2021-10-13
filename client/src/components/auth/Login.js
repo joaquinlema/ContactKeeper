@@ -1,9 +1,11 @@
 import { Form, Input, Button } from 'antd';
 import { useContext, useEffect, useState } from 'react';
+import {useHistory  } from 'react-router';
 import AlertContext from '../../context/alert/AlertContext';
 import AuthContext from '../../context/auth/AuthContext';
 
 const Login = (props) => {
+    let history = useHistory();
 
     const alertContext = useContext(AlertContext);
     const authContext = useContext(AuthContext);
@@ -20,7 +22,7 @@ const Login = (props) => {
     useEffect(() => {
 
         if (isAuthenticated) {
-            props.history.push('/');
+            history.push("/");
         }
 
         if (error) {

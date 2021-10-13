@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from '../components/pages/Home';
 import About from '../components/pages/About';
 import Register from '../components/auth/Register';
@@ -8,7 +8,6 @@ import PrivateRoute from './PrivateRoute';
 
 const AppRoute = () => {
     return (
-        <Router>
             <Switch>
                 <PrivateRoute exact={true} path='/'>
                     <Home />
@@ -23,8 +22,7 @@ const AppRoute = () => {
                     <Login />
                 </Route>
             </Switch>
-        </Router>
-    )
-}
+    );
+};
 
 export default AppRoute

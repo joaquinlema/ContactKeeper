@@ -13,7 +13,7 @@ import { useHistory } from 'react-router';
 
 const { Header, Sider, Content } = Layout;
 
-const LandingPage = () => {
+const LandingPage = (props) => {
     const [collapsed, setCollapsed] = useState(false);
     let history = useHistory();
 
@@ -32,7 +32,7 @@ const LandingPage = () => {
                     <Menu.Item key="2" icon={<VideoCameraOutlined />} onClick={() => { history.push('/register')}}>
                         Register
                     </Menu.Item>
-                    <Menu.Item key="3" icon={<UploadOutlined />} onClick={() => { history.push('/home')}}>
+                    <Menu.Item key="3" icon={<UploadOutlined />} onClick={() => { history.push('/')}}>
                         Home
                     </Menu.Item>
                 </Menu>
