@@ -6,9 +6,8 @@ const { Meta } = Card;
 
 const ContactsItems = ({ nombre, email, type }) => {
     return (
-        <Badge.Ribbon text={type} color={type !== 'personal' ? "gold" : "blue"}>
+        <Badge.Ribbon text={`${type}`} color={type !== 'personal' ? "gold" : "blue"}>
             <Card
-                style={{ width: 300 }}
                 cover={
                     <img
                         alt="example"

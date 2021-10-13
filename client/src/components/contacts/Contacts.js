@@ -26,7 +26,7 @@ const Contacts = () => {
                                 timeout={500}
                                 classNames="item"
                             >   
-                                <ContactsItems nombre={contact.nombre} email={contact.email} />
+                                <ContactsItems nombre={contact.nombre} email={contact.email} type={contact.type}/>
                             </CSSTransition>
                         ))}
                     </TransitionGroup>
