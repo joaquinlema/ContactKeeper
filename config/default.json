@@ -1,4 +1,0 @@
-{
-    "mongoURI":"mongodb+srv://joaco:Softtek.2021@contactkeeper.sq0rh.mongodb.net/ContactKeeper?retryWrites=true&w=majority",
-    "jwtSecret":"secret"
-} 
